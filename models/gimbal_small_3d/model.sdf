@@ -216,8 +216,9 @@
             filename="GstCameraPlugin">
           <udp_host>127.0.0.1</udp_host>
           <udp_port>5600</udp_port>
-          <use_basic_pipeline>true</use_basic_pipeline>
+          <use_basic_pipeline>false</use_basic_pipeline>
           <use_cuda>false</use_cuda>
+          <enable_topic>/gimbal/camera/enable_streaming</enable_topic>
         </plugin>
 
       </sensor>

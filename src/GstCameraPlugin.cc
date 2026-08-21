@@ -220,6 +220,16 @@ void GstCameraPlugin::PreUpdate(const UpdateInfo &_info,
             }
             impl->enableTopic = maybeTopic.value() + "/enable_streaming";
         }
+        if (!impl->imageTopic.empty() && impl->imageTopic.front() != '/')
+        {
+            impl->imageTopic = "/" + impl->imageTopic;
+        }
+
+        if (!impl->enableTopic.empty() && impl->enableTopic.front() != '/')
+        {
+            impl->enableTopic = "/" + impl->enableTopic;
+        }
+
         gzmsg << "GstCameraPlugin: image topic ["
               << impl->imageTopic << "]" << std::endl;
         gzmsg << "GstCameraPlugin: enable topic ["
