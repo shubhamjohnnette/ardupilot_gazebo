@@ -120,12 +120,14 @@
       <pose degrees="true">0 0 0.35 -10 0 90</pose>
     </include>
 
-    <!-- ==================== NATIVE GROUND OBJECTS & TARGETS (5x SCALED & ENRICHED) ==================== -->
+    <!-- ==================== PARALLEL RUNWAY FLANK GROUND OBJECTS & TARGETS ==================== -->
+    <!-- West Flank Corridor: X = -110m | East Flank Corridor: X = +50m | Runway Strip: X = -44m..-14m (100% CLEAR) -->
 
-    <!-- ===== 50m: Ground Station Control Shelter (5x Scaled) ===== -->
+    <!-- ==================== WEST SIDE FLANK (X = -110m) ==================== -->
+    <!-- ===== West Y=50m: Ground Station Control Shelter ===== -->
     <model name="ground_station_50m">
       <static>true</static>
-      <pose degrees="true">15 50 7.5 0 0 0</pose>
+      <pose degrees="true">-110 50 7.5 0 0 90</pose>
       <link name="link">
         <visual name="shelter">
           <geometry>
@@ -134,8 +136,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.7 1</ambient>
-            <diffuse>0.8 0.8 0.7 1</diffuse>
+            <ambient>0.85 0.75 0.5 1</ambient>
+            <diffuse>0.85 0.75 0.5 1</diffuse>
           </material>
         </visual>
         <visual name="roof">
@@ -146,8 +148,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.2 0.3 0.4 1</ambient>
-            <diffuse>0.2 0.3 0.4 1</diffuse>
+            <ambient>0.1 0.2 0.4 1</ambient>
+            <diffuse>0.1 0.2 0.4 1</diffuse>
           </material>
         </visual>
         <visual name="antenna_dish">
@@ -159,97 +161,24 @@
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.9 0.9 0.9 1</ambient>
-            <diffuse>0.9 0.9 0.9 1</diffuse>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 20m: Yellow SUV Car (5x Scaled) ===== -->
-    <model name="car_yellow_20m">
-      <static>true</static>
-      <pose degrees="true">20 20 3.0 0 0 45</pose>
-      <link name="link">
-        <visual name="chassis">
-          <geometry>
-            <box>
-              <size>22.5 10.0 6.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.9 0.8 0 1</ambient>
-            <diffuse>0.9 0.8 0 1</diffuse>
-          </material>
-        </visual>
-        <visual name="cabin">
-          <pose>0 0 5.0 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>12.5 9.0 4.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.2 0.2 0.2 1</ambient>
-            <diffuse>0.2 0.2 0.2 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 150m: Aircraft Storage Hangar Facility ===== -->
-    <model name="hangar_building_150m">
-      <static>true</static>
-      <pose degrees="true">-60 150 10.0 0 0 12</pose>
-      <link name="link">
-        <visual name="main_structure">
-          <geometry>
-            <box>
-              <size>50.0 40.0 20.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.3 0.35 0.4 1</ambient>
-            <diffuse>0.3 0.35 0.4 1</diffuse>
-          </material>
-        </visual>
-        <visual name="roof">
-          <pose>0 0 10.5 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>52.0 42.0 1.5</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.7 0.7 0.75 1</ambient>
-            <diffuse>0.7 0.7 0.75 1</diffuse>
-          </material>
-        </visual>
-        <visual name="hangar_door">
-          <pose>0 20.1 -2.0 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>30.0 0.5 14.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.15 0.15 0.2 1</ambient>
-            <diffuse>0.15 0.15 0.2 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 150m: High-Contrast Helipad Landing Target ===== -->
+    <!-- ===== West Y=180m: Circular Helipad Landing Target ===== -->
     <model name="helipad_target_150m">
       <static>true</static>
-      <pose degrees="true">-25 150 0.25 0 0 0</pose>
+      <pose degrees="true">-110 180 0.25 0 0 0</pose>
       <link name="link">
         <visual name="outer_pad">
           <geometry>
-            <box>
-              <size>30.0 30.0 0.5</size>
-            </box>
+            <cylinder>
+              <radius>15.0</radius>
+              <length>0.5</length>
+            </cylinder>
           </geometry>
           <material>
             <ambient>1.0 0.7 0.0 1</ambient>
@@ -265,8 +194,8 @@
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.0 0.8 0.9 1</ambient>
-            <diffuse>0.0 0.8 0.9 1</diffuse>
+            <ambient>0.0 0.3 0.9 1</ambient>
+            <diffuse>0.0 0.3 0.9 1</diffuse>
           </material>
         </visual>
         <visual name="h_bar_left">
@@ -308,10 +237,10 @@
       </link>
     </model>
 
-    <!-- ===== 250m: Red Sedan Car (5x Scaled) ===== -->
+    <!-- ===== West Y=320m: Red Sedan Car ===== -->
     <model name="car_red_250m">
       <static>true</static>
-      <pose degrees="true">25 250 2.5 0 0 30</pose>
+      <pose degrees="true">-110 320 2.5 0 0 0</pose>
       <link name="link">
         <visual name="chassis">
           <geometry>
@@ -320,8 +249,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.9 0.1 0.1 1</ambient>
-            <diffuse>0.9 0.1 0.1 1</diffuse>
+            <ambient>0.95 0.1 0.15 1</ambient>
+            <diffuse>0.95 0.1 0.15 1</diffuse>
           </material>
         </visual>
         <visual name="roof">
@@ -332,50 +261,249 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.1 0.1 0.1 1</ambient>
-            <diffuse>0.1 0.1 0.1 1</diffuse>
+            <ambient>0.15 0.15 0.15 1</ambient>
+            <diffuse>0.15 0.15 0.15 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 250m: Large Trees (5x Scaled) ===== -->
-    <model name="tree_250m_1">
+    <!-- ===== West Y=480m: Radar Dome Tower ===== -->
+    <model name="radar_tower_400m">
       <static>true</static>
-      <pose>40 240 0.0 0 0 0</pose>
+      <pose degrees="true">-110 480 0.0 0 0 0</pose>
       <link name="link">
-        <visual name="trunk">
-          <pose>0 0 7.5 0 0 0</pose>
+        <visual name="tower_leg">
+          <pose>0 0 17.5 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>2.0</radius>
-              <length>15.0</length>
+              <radius>3.0</radius>
+              <length>35.0</length>
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.4 0.25 0.1 1</ambient>
-            <diffuse>0.4 0.25 0.1 1</diffuse>
+            <ambient>0.4 0.1 0.6 1</ambient>
+            <diffuse>0.4 0.1 0.6 1</diffuse>
           </material>
         </visual>
-        <visual name="foliage">
-          <pose>0 0 20.0 0 0 0</pose>
+        <visual name="radar_orb">
+          <pose>0 0 42.5 0 0 0</pose>
           <geometry>
             <sphere>
-              <radius>15.0</radius>
+              <radius>7.5</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0.1 0.5 0.1 1</ambient>
-            <diffuse>0.1 0.5 0.1 1</diffuse>
+            <ambient>1.0 0.65 0.0 1</ambient>
+            <diffuse>1.0 0.65 0.0 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 350m: Industrial Fuel Storage Farm ===== -->
+    <!-- ===== West Y=640m: Heavy Construction Hauler Truck ===== -->
+    <model name="heavy_truck_600m">
+      <static>true</static>
+      <pose degrees="true">-110 640 4.0 0 0 0</pose>
+      <link name="link">
+        <visual name="hauler_bed">
+          <geometry>
+            <box>
+              <size>25.0 10.0 8.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.4 0.0 1</ambient>
+            <diffuse>1.0 0.4 0.0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="driver_cab">
+          <pose>8.0 0 7.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>8.0 9.5 7.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== West Y=800m: Bright Red Circular Target Pad ===== -->
+    <model name="target_pad_500m">
+      <static>true</static>
+      <pose>-110 800 0.25 0 0 0</pose>
+      <link name="link">
+        <visual name="outer">
+          <geometry>
+            <cylinder>
+              <radius>20.0</radius>
+              <length>0.5</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="inner_white">
+          <pose>0 0 0.3 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>12.5</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="bullseye">
+          <pose>0 0 0.35 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>5.0</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.8 0.25 1</ambient>
+            <diffuse>0.0 0.8 0.25 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== West Y=960m: Aircraft Storage Hangar Facility ===== -->
+    <model name="hangar_building_150m">
+      <static>true</static>
+      <pose degrees="true">-110 960 10.0 0 0 90</pose>
+      <link name="link">
+        <visual name="main_structure">
+          <geometry>
+            <box>
+              <size>50.0 40.0 20.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.35 0.5 1</ambient>
+            <diffuse>0.2 0.35 0.5 1</diffuse>
+          </material>
+        </visual>
+        <visual name="roof">
+          <pose>0 0 10.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>52.0 42.0 1.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.85 0.9 1</ambient>
+            <diffuse>0.85 0.85 0.9 1</diffuse>
+          </material>
+        </visual>
+        <visual name="hangar_door">
+          <pose>0 20.1 -2.0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>30.0 0.5 14.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.15 0.15 0.2 1</ambient>
+            <diffuse>0.15 0.15 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+    <!-- ==================== EAST SIDE FLANK (X = +50m) ==================== -->
+    <!-- ===== East Y=50m: Yellow SUV Car ===== -->
+    <model name="car_yellow_20m">
+      <static>true</static>
+      <pose degrees="true">50 50 3.0 0 0 0</pose>
+      <link name="link">
+        <visual name="chassis">
+          <geometry>
+            <box>
+              <size>22.5 10.0 6.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.85 0.0 1</ambient>
+            <diffuse>1.0 0.85 0.0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="cabin">
+          <pose>0 0 5.0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>12.5 9.0 4.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.2 1</ambient>
+            <diffuse>0.1 0.1 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== East Y=180m: 50m Master Circular Target Pad ===== -->
+    <model name="center_master_target_pad">
+      <static>true</static>
+      <pose>50 180 0.25 0 0 0</pose>
+      <link name="link">
+        <visual name="outer_ring">
+          <geometry>
+            <cylinder>
+              <radius>25.0</radius>
+              <length>0.5</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.85 0.95 1</ambient>
+            <diffuse>0.0 0.85 0.95 1</diffuse>
+          </material>
+        </visual>
+        <visual name="mid_white_ring">
+          <pose>0 0 0.3 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>15.0</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="bullseye_red">
+          <pose>0 0 0.35 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>6.0</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== East Y=320m: Industrial Fuel Storage Farm ===== -->
     <model name="fuel_tanks_350m">
       <static>true</static>
-      <pose degrees="true">55 350 9.0 0 0 0</pose>
+      <pose degrees="true">55 320 9.0 0 0 0</pose>
       <link name="link">
         <visual name="tank_1">
           <pose>-10 0 0 0 0 0</pose>
@@ -386,8 +514,8 @@
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.9 0.8 0.1 1</ambient>
-            <diffuse>0.9 0.8 0.1 1</diffuse>
+            <ambient>0.95 0.85 0.0 1</ambient>
+            <diffuse>0.95 0.85 0.0 1</diffuse>
           </material>
         </visual>
         <visual name="tank_2">
@@ -399,8 +527,8 @@
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.9 0.8 0.1 1</ambient>
-            <diffuse>0.9 0.8 0.1 1</diffuse>
+            <ambient>1.0 0.4 0.0 1</ambient>
+            <diffuse>1.0 0.4 0.0 1</diffuse>
           </material>
         </visual>
         <visual name="connect_pipe">
@@ -412,50 +540,17 @@
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>
-            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <ambient>0.75 0.75 0.8 1</ambient>
+            <diffuse>0.75 0.75 0.8 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 400m: High-Visibility Radar Dome Tower ===== -->
-    <model name="radar_tower_400m">
-      <static>true</static>
-      <pose degrees="true">-70 400 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="tower_leg">
-          <pose>0 0 17.5 0 0 0</pose>
-          <geometry>
-            <cylinder>
-              <radius>3.0</radius>
-              <length>35.0</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>0.2 0.3 0.5 1</ambient>
-            <diffuse>0.2 0.3 0.5 1</diffuse>
-          </material>
-        </visual>
-        <visual name="radar_orb">
-          <pose>0 0 42.5 0 0 0</pose>
-          <geometry>
-            <sphere>
-              <radius>7.5</radius>
-            </sphere>
-          </geometry>
-          <material>
-            <ambient>1.0 0.4 0.0 1</ambient>
-            <diffuse>1.0 0.4 0.0 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 500m: Blue Cargo Truck (5x Scaled) ===== -->
+    <!-- ===== East Y=480m: Blue Cargo Truck ===== -->
     <model name="truck_blue_500m">
       <static>true</static>
-      <pose degrees="true">30 500 0.0 0 0 90</pose>
+      <pose degrees="true">50 480 0.0 0 0 90</pose>
       <link name="link">
         <visual name="cabin">
           <pose>12.5 0 5.5 0 0 0</pose>
@@ -465,8 +560,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.1 0.3 0.9 1</ambient>
-            <diffuse>0.1 0.3 0.9 1</diffuse>
+            <ambient>0.1 0.25 0.95 1</ambient>
+            <diffuse>0.1 0.25 0.95 1</diffuse>
           </material>
         </visual>
         <visual name="cargo">
@@ -477,141 +572,35 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>
-            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <ambient>0.95 0.95 0.95 1</ambient>
+            <diffuse>0.95 0.95 0.95 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 500m: Main Building (5x Scaled) ===== -->
-    <model name="building_500m">
-      <static>true</static>
-      <pose degrees="true">-50 500 25.0 0 0 0</pose>
-      <link name="link">
-        <visual name="main">
-          <geometry>
-            <box>
-              <size>75.0 125.0 50.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.6 0.6 0.6 1</ambient>
-            <diffuse>0.6 0.6 0.6 1</diffuse>
-          </material>
-        </visual>
-        <visual name="roof">
-          <pose>0 0 26.0 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>80.0 130.0 2.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.3 0.3 0.3 1</ambient>
-            <diffuse>0.3 0.3 0.3 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 500m: Bright Red Target Pad (5x Scaled) ===== -->
-    <model name="target_pad_500m">
-      <static>true</static>
-      <pose>0 500 0.5 0 0 0</pose>
-      <link name="link">
-        <visual name="outer">
-          <geometry>
-            <box>
-              <size>40.0 40.0 1.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
-          </material>
-        </visual>
-        <visual name="inner_white">
-          <pose>0 0 0.55 0 0 0</pose>
-          <geometry>
-            <cylinder>
-              <radius>12.5</radius>
-              <length>0.25</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>1 1 1 1</ambient>
-            <diffuse>1 1 1 1</diffuse>
-          </material>
-        </visual>
-        <visual name="bullseye">
-          <pose>0 0 0.7 0 0 0</pose>
-          <geometry>
-            <cylinder>
-              <radius>5.0</radius>
-              <length>0.25</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 600m: Heavy Construction Hauler Truck ===== -->
-    <model name="heavy_truck_600m">
-      <static>true</static>
-      <pose degrees="true">-45 600 4.0 0 0 -45</pose>
-      <link name="link">
-        <visual name="hauler_bed">
-          <geometry>
-            <box>
-              <size>25.0 10.0 8.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>1.0 0.45 0 1</ambient>
-            <diffuse>1.0 0.45 0 1</diffuse>
-          </material>
-        </visual>
-        <visual name="driver_cab">
-          <pose>8.0 0 7.5 0 0 0</pose>
-          <geometry>
-            <box>
-              <size>8.0 9.5 7.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.15 0.15 0.15 1</ambient>
-            <diffuse>0.15 0.15 0.15 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 750m: Tri-Color Target Pad ===== -->
+    <!-- ===== East Y=640m: Tri-Color Circular Target Pad ===== -->
     <model name="tri_color_target_pad_750m">
       <static>true</static>
-      <pose>30 750 0.25 0 0 0</pose>
+      <pose>50 640 0.25 0 0 0</pose>
       <link name="link">
         <visual name="outer_magenta">
           <geometry>
-            <box>
-              <size>40.0 40.0 0.5</size>
-            </box>
+            <cylinder>
+              <radius>20.0</radius>
+              <length>0.5</length>
+            </cylinder>
           </geometry>
           <material>
-            <ambient>1.0 0.1 0.6 1</ambient>
-            <diffuse>1.0 0.1 0.6 1</diffuse>
+            <ambient>1.0 0.0 0.6 1</ambient>
+            <diffuse>1.0 0.0 0.6 1</diffuse>
           </material>
         </visual>
         <visual name="mid_white">
           <pose>0 0 0.3 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>14.0</radius>
+              <radius>12.0</radius>
               <length>0.1</length>
             </cylinder>
           </geometry>
@@ -624,22 +613,22 @@
           <pose>0 0 0.35 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>6.0</radius>
+              <radius>5.0</radius>
               <length>0.1</length>
             </cylinder>
           </geometry>
           <material>
-            <ambient>0.1 1.0 0.2 1</ambient>
-            <diffuse>0.1 1.0 0.2 1</diffuse>
+            <ambient>0.0 1.0 0.2 1</ambient>
+            <diffuse>0.0 1.0 0.2 1</diffuse>
           </material>
         </visual>
       </link>
     </model>
 
-    <!-- ===== 800m: Wind Turbine Tower ===== -->
+    <!-- ===== East Y=800m: Wind Turbine Tower ===== -->
     <model name="wind_turbine_800m">
       <static>true</static>
-      <pose degrees="true">-80 800 0.0 0 0 0</pose>
+      <pose degrees="true">50 800 0.0 0 0 0</pose>
       <link name="link">
         <visual name="mast">
           <pose>0 0 35.0 0 0 0</pose>
@@ -662,8 +651,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.9 0.2 0.2 1</ambient>
-            <diffuse>0.9 0.2 0.2 1</diffuse>
+            <ambient>0.9 0.1 0.1 1</ambient>
+            <diffuse>0.9 0.1 0.1 1</diffuse>
           </material>
         </visual>
         <visual name="hub">
@@ -681,10 +670,94 @@
       </link>
     </model>
 
-    <!-- ===== 900m: Solar Panel Array Installation ===== -->
+    <!-- ===== East Y=960m: 60m Beacon Target Tower ===== -->
+    <model name="target_tower_1000m">
+      <static>true</static>
+      <pose>50 960 0.0 0 0 0</pose>
+      <link name="link">
+        <visual name="tower_body">
+          <pose>0 0 30.0 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>12.5</radius>
+              <length>60.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.8 0.2 1</ambient>
+            <diffuse>0.0 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+        <visual name="top_beacon_orb">
+          <pose>0 0 65.0 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>15.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>1.0 0.4 0.0 1</ambient>
+            <diffuse>1.0 0.4 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ===== OUTER ENRICHMENT OBJECTS ===== -->
+    <!-- Main Building (West Outer) -->
+    <model name="building_500m">
+      <static>true</static>
+      <pose degrees="true">-160 500 25.0 0 0 0</pose>
+      <link name="link">
+        <visual name="main">
+          <geometry>
+            <box>
+              <size>75.0 125.0 50.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.35 0.15 1</ambient>
+            <diffuse>0.8 0.35 0.15 1</diffuse>
+          </material>
+        </visual>
+        <visual name="roof">
+          <pose>0 0 26.0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>80.0 130.0 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.25 0.25 1</ambient>
+            <diffuse>0.25 0.25 0.25 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Delivery Van (East Outer) -->
+    <model name="van_white_1000m">
+      <static>true</static>
+      <pose degrees="true">100 250 6.0 0 0 0</pose>
+      <link name="link">
+        <visual name="body">
+          <geometry>
+            <box>
+              <size>25.0 11.0 12.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.95 0.1 1</ambient>
+            <diffuse>0.85 0.95 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Solar Panel Farm (East Outer) -->
     <model name="solar_farm_900m">
       <static>true</static>
-      <pose degrees="true">60 900 3.0 0 15 0</pose>
+      <pose degrees="true">110 750 3.0 0 15 0</pose>
       <link name="link">
         <visual name="solar_panels">
           <geometry>
@@ -693,8 +766,8 @@
             </box>
           </geometry>
           <material>
-            <ambient>0.05 0.15 0.5 1</ambient>
-            <diffuse>0.05 0.15 0.5 1</diffuse>
+            <ambient>0.05 0.1 0.65 1</ambient>
+            <diffuse>0.05 0.1 0.65 1</diffuse>
           </material>
         </visual>
         <visual name="frame_base">
@@ -712,100 +785,55 @@
       </link>
     </model>
 
-    <!-- ===== 1000m (1km): White Delivery Van (5x Scaled) ===== -->
-    <model name="van_white_1000m">
+    <!-- Parallel Runway Flank Tree Lines -->
+    <model name="loiter_ring_tree_line">
       <static>true</static>
-      <pose degrees="true">35 1000 6.0 0 0 0</pose>
+      <pose>0 500 0.0 0 0 0</pose>
       <link name="link">
-        <visual name="body">
-          <geometry>
-            <box>
-              <size>25.0 11.0 12.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.95 0.95 0.95 1</ambient>
-            <diffuse>0.95 0.95 0.95 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== 1000m (1km): 60m Beacon Target Tower (5x Scaled) ===== -->
-    <model name="target_tower_1000m">
-      <static>true</static>
-      <pose>0 1000 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="tower_body">
-          <pose>0 0 30.0 0 0 0</pose>
-          <geometry>
-            <cylinder>
-              <radius>12.5</radius>
-              <length>60.0</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>0 0.8 0.2 1</ambient>
-            <diffuse>0 0.8 0.2 1</diffuse>
-          </material>
-        </visual>
-        <visual name="top_beacon_orb">
-          <pose>0 0 65.0 0 0 0</pose>
-          <geometry>
-            <sphere>
-              <radius>15.0</radius>
-            </sphere>
-          </geometry>
-          <material>
-            <ambient>1 0.4 0 1</ambient>
-            <diffuse>1 0.4 0 1</diffuse>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- ===== Runway Flank Tree Cluster Line ===== -->
-    <model name="tree_cluster_line">
-      <static>true</static>
-      <pose>65 300 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="tree_1_trunk">
-          <pose>0 -150 7.5 0 0 0</pose>
-          <geometry>
-            <cylinder><radius>2.0</radius><length>15.0</length></cylinder>
-          </geometry>
+        <!-- West Tree Line -->
+        <visual name="tree_west_1">
+          <pose>-150 -300 7.5 0 0 0</pose>
+          <geometry><cylinder><radius>2.0</radius><length>15.0</length></cylinder></geometry>
           <material><ambient>0.4 0.25 0.1 1</ambient><diffuse>0.4 0.25 0.1 1</diffuse></material>
         </visual>
-        <visual name="tree_1_foliage">
-          <pose>0 -150 20.0 0 0 0</pose>
+        <visual name="foliage_west_1">
+          <pose>-150 -300 20.0 0 0 0</pose>
           <geometry><sphere><radius>15.0</radius></sphere></geometry>
-          <material><ambient>0.1 0.5 0.1 1</ambient><diffuse>0.1 0.5 0.1 1</diffuse></material>
+          <material><ambient>0.05 0.45 0.1 1</ambient><diffuse>0.05 0.45 0.1 1</diffuse></material>
         </visual>
 
-        <visual name="tree_2_trunk">
-          <pose>10 0 7.5 0 0 0</pose>
-          <geometry>
-            <cylinder><radius>2.2</radius><length>15.0</length></cylinder>
-          </geometry>
+        <visual name="tree_west_2">
+          <pose>-150 300 7.5 0 0 0</pose>
+          <geometry><cylinder><radius>2.0</radius><length>15.0</length></cylinder></geometry>
           <material><ambient>0.4 0.25 0.1 1</ambient><diffuse>0.4 0.25 0.1 1</diffuse></material>
         </visual>
-        <visual name="tree_2_foliage">
-          <pose>10 0 20.0 0 0 0</pose>
+        <visual name="foliage_west_2">
+          <pose>-150 300 20.0 0 0 0</pose>
+          <geometry><sphere><radius>15.0</radius></sphere></geometry>
+          <material><ambient>0.8 0.2 0.05 1</ambient><diffuse>0.8 0.2 0.05 1</diffuse></material>
+        </visual>
+
+        <!-- East Tree Line -->
+        <visual name="tree_east_1">
+          <pose>120 -200 7.5 0 0 0</pose>
+          <geometry><cylinder><radius>2.2</radius><length>15.0</length></cylinder></geometry>
+          <material><ambient>0.4 0.25 0.1 1</ambient><diffuse>0.4 0.25 0.1 1</diffuse></material>
+        </visual>
+        <visual name="foliage_east_1">
+          <pose>120 -200 20.0 0 0 0</pose>
           <geometry><sphere><radius>16.0</radius></sphere></geometry>
-          <material><ambient>0.15 0.55 0.1 1</ambient><diffuse>0.15 0.55 0.1 1</diffuse></material>
+          <material><ambient>0.2 0.7 0.1 1</ambient><diffuse>0.2 0.7 0.1 1</diffuse></material>
         </visual>
 
-        <visual name="tree_3_trunk">
-          <pose>-5 150 7.5 0 0 0</pose>
-          <geometry>
-            <cylinder><radius>2.0</radius><length>15.0</length></cylinder>
-          </geometry>
+        <visual name="tree_east_2">
+          <pose>120 400 7.5 0 0 0</pose>
+          <geometry><cylinder><radius>2.0</radius><length>15.0</length></cylinder></geometry>
           <material><ambient>0.4 0.25 0.1 1</ambient><diffuse>0.4 0.25 0.1 1</diffuse></material>
         </visual>
-        <visual name="tree_3_foliage">
-          <pose>-5 150 20.0 0 0 0</pose>
+        <visual name="foliage_east_2">
+          <pose>120 400 20.0 0 0 0</pose>
           <geometry><sphere><radius>15.0</radius></sphere></geometry>
-          <material><ambient>0.1 0.45 0.1 1</ambient><diffuse>0.1 0.45 0.1 1</diffuse></material>
+          <material><ambient>0.9 0.6 0.0 1</ambient><diffuse>0.9 0.6 0.0 1</diffuse></material>
         </visual>
       </link>
     </model>
