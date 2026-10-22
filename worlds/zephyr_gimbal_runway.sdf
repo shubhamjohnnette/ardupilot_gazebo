@@ -3,7 +3,7 @@
   <world name="zephyr_runway">
     <physics name="1ms" type="ignore">
       <max_step_size>0.001</max_step_size>
-      <real_time_factor>-1.0</real_time_factor>
+      <real_time_factor>1.0</real_time_factor>
     </physics>
 
     <plugin filename="gz-sim-physics-system"
@@ -53,52 +53,122 @@
       <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <model name="axes">
+    <!-- Origin Target Marker at (0, 0, 0) -->
+    <model name="origin_target_pad_0_0">
       <static>1</static>
+      <pose>0 0 0 0 0 0</pose>
       <link name="link">
-        <visual name="r">
+        <!-- Outer High-Visibility Ring (16m diameter) -->
+        <visual name="outer_yellow_ring">
+          <pose>0 0 0.01 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>8.0</radius>
+              <length>0.02</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 0.8 0.0 1</ambient>
+            <diffuse>1.0 0.8 0.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Intermediate White Ring (11m diameter) -->
+        <visual name="mid_white_ring">
+          <pose>0 0 0.02 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>5.5</radius>
+              <length>0.02</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Inner Cyan Ring (7m diameter) -->
+        <visual name="inner_cyan_ring">
+          <pose>0 0 0.03 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>3.5</radius>
+              <length>0.02</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 0.6 0.9 1</ambient>
+            <diffuse>0.0 0.6 0.9 1</diffuse>
+          </material>
+        </visual>
+        <!-- Center Red Bullseye (3.6m diameter) -->
+        <visual name="center_red_bullseye">
+          <pose>0 0 0.04 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>1.8</radius>
+              <length>0.02</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 0.05 0.05 1</ambient>
+            <diffuse>1.0 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+        <!-- Center White Dot (1.2m diameter) at exact (0, 0) -->
+        <visual name="center_white_dot">
+          <pose>0 0 0.05 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.6</radius>
+              <length>0.02</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Origin Coordinate Axes (X=Red, Y=Green, Z=Blue) -->
+        <visual name="axis_x_red">
           <cast_shadows>0</cast_shadows>
-          <pose>5 0 0.1 0 0 0</pose>
+          <pose>5 0 0.06 0 0 0</pose>
           <geometry>
             <box>
-              <size>10 0.01 0.01</size>
+              <size>10 0.1 0.05</size>
             </box>
           </geometry>
           <material>
-            <ambient>1 0 0 0.8</ambient>
-            <diffuse>1 0 0 0.8</diffuse>
-            <emissive>1 0 0 0.8</emissive>
-            <specular>0.5 0.5 0.5 0.8</specular>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.8 0 0 1</emissive>
           </material>
         </visual>
-        <visual name="g">
+        <visual name="axis_y_green">
           <cast_shadows>0</cast_shadows>
-          <pose>0 5 0.1 0 0 0</pose>
+          <pose>0 5 0.06 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 10 0.01</size>
+              <size>0.1 10 0.05</size>
             </box>
           </geometry>
           <material>
-            <ambient>0 1 0 0.8</ambient>
-            <diffuse>0 1 0 0.8</diffuse>
-            <emissive>0 1 0 0.8</emissive>
-            <specular>0.5 0.5 0.5 0.8</specular>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <emissive>0 0.8 0 1</emissive>
           </material>
         </visual>
-        <visual name="b">
+        <visual name="axis_z_blue">
           <cast_shadows>0</cast_shadows>
           <pose>0 0 5.1 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.01 10</size>
+              <size>0.1 0.1 10</size>
             </box>
           </geometry>
           <material>
-            <ambient>0 0 1 0.8</ambient>
-            <diffuse>0 0 1 0.8</diffuse>
-            <emissive>0 0 1 0.8</emissive>
-            <specular>0.5 0.5 0.5 0.8</specular>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+            <emissive>0 0 0.8 1</emissive>
           </material>
         </visual>
         <sensor name="navsat_sensor" type="navsat">
@@ -114,10 +184,10 @@
       <pose degrees="true">-29 545 0 0 0 363</pose>
     </include>
 
-    <!-- Aircraft Model -->
+    <!-- Aircraft Model: Positioned at Y=-25m facing North down the runway (+Y, Yaw=180°) pointing directly at (0, 0) -->
     <include>
       <uri>model://zephyr_with_gimbal</uri>
-      <pose degrees="true">0 0 0.35 -10 0 90</pose>
+      <pose degrees="true">0 -25 0.35 0 0 180</pose>
     </include>
 
     <!-- ==================== PARALLEL RUNWAY FLANK GROUND OBJECTS & TARGETS ==================== -->

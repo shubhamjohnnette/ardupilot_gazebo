@@ -2,12 +2,22 @@
 SERVO1_FUNCTION  77   # Elevon Left
 SERVO1_REVERSED  1
 SERVO1_TRIM      1500
+SERVO1_MIN       1100
+SERVO1_MAX       1900
 
 SERVO2_FUNCTION  78   # Elevon Right
 SERVO2_REVERSED  1
 SERVO2_TRIM      1500
+SERVO2_MIN       1100
+SERVO2_MAX       1900
 
 SERVO3_FUNCTION  70   # Throttle
+SERVO3_TRIM      1100
+SERVO3_MIN       1100
+SERVO3_MAX       1900
+
+# Disable arming check for easy SITL development
+ARMING_CHECK     0
 
 # Zephyr elevon mixing
 ELEVON_OUTPUT    3
@@ -32,29 +42,93 @@ INS_GYR_CAL      0
 ARSPD_TYPE       0
 BATT_MONITOR     4
 
-# Servo gimbal on mount 1 has 3 DOF
+# Servo gimbal on mount 1 has 3 DOF (symmetric ranges aligned with drone nose)
 MNT1_TYPE        1
-MNT1_PITCH_MAX   45
-MNT1_PITCH_MIN   -135
-MNT1_ROLL_MAX    30
+MNT1_PITCH_MIN   -90
+MNT1_PITCH_MAX   90
 MNT1_ROLL_MIN    -30
-MNT1_YAW_MAX     160
+MNT1_ROLL_MAX    30
 MNT1_YAW_MIN     -160
+MNT1_YAW_MAX     160
 
-# Gimbal RC in
+# Default operating mode: 3 = RC Targeting (actively controlled by RC 7 and 8)
+MNT1_DEFA_MODE   3
+
+# Mount RC input channel mapping
+MNT1_RC_IN_TILT  7
+MNT1_RC_IN_PAN   8
+MNT1_RC_IN_ROLL  6
+
+# Disable stick mixing so override commands hold without conflict
+MNT1_STK_MIX     0
+
+# RC override timeout in seconds (>0 enables MAVLink RC_CHANNELS_OVERRIDE; 0 disables it completely!)
+RC_OVERRIDE_TIME 3.0
+
+# Flight control RC input calibration (1100 to 1900 us)
+RC1_MIN          1100
+RC1_MAX          1900
+RC1_TRIM         1500
+RC2_MIN          1100
+RC2_MAX          1900
+RC2_TRIM         1500
+RC3_MIN          1100
+RC3_MAX          1900
+RC3_TRIM         1100
+RC4_MIN          1100
+RC4_MAX          1900
+RC4_TRIM         1500
+
+# Mount stabilization: 0 = follow drone body (align with nose), 1 = earth frame
+MNT1_STAB_ROLL   0
+MNT1_STAB_PITCH  0
+MNT1_STAB_YAW    0
+
+# Neutral angles (degrees relative to nose: pitch 0, roll 0, yaw 0)
+MNT1_NEUTRAL_X   0
+MNT1_NEUTRAL_Y   0
+MNT1_NEUTRAL_Z   0
+
+# Retract angles (degrees relative to nose)
+MNT1_RETRACT_X   0
+MNT1_RETRACT_Y   0
+MNT1_RETRACT_Z   0
+
+# Gimbal RC in calibration (center 1500us = nose forward)
 RC6_MAX          1900
 RC6_MIN          1100
+RC6_TRIM         1500
 RC6_OPTION       212  # Mount1 Roll
 
 RC7_MAX          1900
 RC7_MIN          1100
+RC7_TRIM         1500
 RC7_OPTION       213  # Mount1 Pitch
 
 RC8_MAX          1900
 RC8_MIN          1100
+RC8_TRIM         1500
 RC8_OPTION       214  # Mount1 Yaw
 
-# Servo outputs for gimbal
+# Servo outputs for gimbal (centered at 1500us = 0 deg forward)
 SERVO6_FUNCTION  8    # Mount1Roll
+SERVO6_MIN       1100
+SERVO6_MAX       1900
+SERVO6_TRIM      1500
+SERVO6_REVERSED  0
+
 SERVO7_FUNCTION  7    # Mount1Pitch
+SERVO7_MIN       1100
+SERVO7_MAX       1900
+SERVO7_TRIM      1500
+SERVO7_REVERSED  0
+
 SERVO8_FUNCTION  6    # Mount1Yaw
+SERVO8_MIN       1100
+SERVO8_MAX       1900
+SERVO8_TRIM      1500
+SERVO8_REVERSED  0
+
+# SITL simulation speedup (1.0 = real-time 1x speed)
+SIM_SPEEDUP      2.0
+
