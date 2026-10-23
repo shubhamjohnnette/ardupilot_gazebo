@@ -143,6 +143,17 @@ target_link_libraries(GstCameraPlugin PRIVATE
   ${GST_LINK_LIBRARIES}
 )
 
+add_library(KinematicLoopPlugin
+  SHARED
+  src/KinematicLoopPlugin.cc
+)
+target_include_directories(KinematicLoopPlugin PRIVATE
+  include
+)
+target_link_libraries(KinematicLoopPlugin PRIVATE
+  gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER}
+)
+
 # --------------------------------------------------------------------------- #
 # Install.
 
@@ -152,6 +163,7 @@ install(
   ParachutePlugin
   CameraZoomPlugin
   GstCameraPlugin
+  KinematicLoopPlugin
   DESTINATION lib/${PROJECT_NAME}
 )
 
