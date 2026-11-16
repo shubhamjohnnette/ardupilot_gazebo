@@ -35,6 +35,21 @@
             </submesh>
           </mesh>
         </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1000000.0</kp>
+              <kd>10.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
       </collision>
       <collision name="right_rudder_collision">
         <pose>-0.76435 0.33918 0.002 -0.03 0 0</pose>

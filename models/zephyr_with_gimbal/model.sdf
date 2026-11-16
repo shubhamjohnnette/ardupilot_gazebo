@@ -11,16 +11,123 @@
       <pose degrees="true">0 -0.08 -0.08 90 0 0</pose>
     </include>
 
-    <joint name="gimbal_joint" type="revolute">
+    <joint name="gimbal_joint" type="fixed">
       <parent>zephyr::wing</parent>
       <child>gimbal::base_link</child>
-      <axis>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-        </limit>
-        <xyz>0 0 1</xyz>
-      </axis>
+    </joint>
+
+    <!-- Aerodynamic Landing Gear Skids (Protects gimbal & enables smooth, short-run takeoff) -->
+    <link name="landing_gear">
+      <inertial>
+        <mass>0.08</mass>
+        <inertia>
+          <ixx>0.001</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>0.001</iyy><iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+
+      <!-- Left Skid Visuals -->
+      <visual name="left_strut">
+        <pose>0.28 -0.05 -0.10 0 0 0</pose>
+        <geometry><cylinder><radius>0.008</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+      </visual>
+      <visual name="left_runner">
+        <pose>0.28 -0.05 -0.19 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.012</radius><length>0.42</length></cylinder></geometry>
+        <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.85 0.85 0.85 1</diffuse></material>
+      </visual>
+
+      <!-- Right Skid Visuals -->
+      <visual name="right_strut">
+        <pose>-0.28 -0.05 -0.10 0 0 0</pose>
+        <geometry><cylinder><radius>0.008</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+      </visual>
+      <visual name="right_runner">
+        <pose>-0.28 -0.05 -0.19 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.012</radius><length>0.42</length></cylinder></geometry>
+        <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.85 0.85 0.85 1</diffuse></material>
+      </visual>
+
+      <!-- Rear Tail Support Visual -->
+      <visual name="tail_support">
+        <pose>0 0.28 -0.10 0 0 0</pose>
+        <geometry><cylinder><radius>0.008</radius><length>0.16</length></cylinder></geometry>
+        <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+      </visual>
+      <visual name="tail_foot">
+        <pose>0 0.28 -0.175 0 0 0</pose>
+        <geometry><sphere><radius>0.015</radius></sphere></geometry>
+        <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.85 0.85 0.85 1</diffuse></material>
+      </visual>
+
+      <!-- Collisions with low friction for smooth high-speed takeoff roll -->
+      <collision name="left_runner_collision">
+        <pose>0.28 -0.05 -0.19 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.012</radius><length>0.42</length></cylinder></geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.02</mu>
+              <mu2>0.02</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1000000.0</kp>
+              <kd>10.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+      <collision name="right_runner_collision">
+        <pose>-0.28 -0.05 -0.19 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.012</radius><length>0.42</length></cylinder></geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.02</mu>
+              <mu2>0.02</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1000000.0</kp>
+              <kd>10.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+
+      <collision name="tail_foot_collision">
+        <pose>0 0.28 -0.175 0 0 0</pose>
+        <geometry><sphere><radius>0.015</radius></sphere></geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.02</mu>
+              <mu2>0.02</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1000000.0</kp>
+              <kd>10.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <joint name="landing_gear_joint" type="fixed">
+      <parent>zephyr::wing</parent>
+      <child>landing_gear</child>
     </joint>
 
     <!-- plugins -->

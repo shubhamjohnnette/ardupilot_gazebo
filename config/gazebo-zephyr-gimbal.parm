@@ -132,3 +132,8 @@ SERVO8_REVERSED  0
 # SITL simulation speedup (1.0 = real-time 1x speed)
 SIM_SPEEDUP      2.0
 
+# Takeoff & ground roll elevator pitch assist (shortens takeoff to 30-50m in FBWA)
+TKOFF_LVL_PITCH  7.0
+FBWA_TDRAG_ELEV  10
+SCALING_SPEED    15.0
+

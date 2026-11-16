@@ -211,7 +211,7 @@
     <!-- Aircraft Model: Positioned at Y=-25m facing North down the runway (+Y, Yaw=180°) pointing directly at (0, 0) -->
     <include>
       <uri>model://zephyr_with_gimbal</uri>
-      <pose degrees="true">0 -25 0.35 0 0 180</pose>
+      <pose degrees="true">0 -25 0.25 0 0 180</pose>
     </include>
 
     <!-- ==================== PARALLEL RUNWAY FLANK GROUND OBJECTS & TARGETS ==================== -->
