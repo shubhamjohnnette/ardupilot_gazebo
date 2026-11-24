@@ -223,8 +223,8 @@ class TelemetryState:
         
         self.gimbal_angles = {"roll": 0.0, "pitch": 0.0, "yaw": 0.0}
         self.dynamic_positions = {
-            "car_red_250m": {"x": -80.0, "y": 800.0, "z": 2.5, "speed": 30.0},
-            "r1_rover": {"x": 30.0, "y": 200.0, "z": 0.38, "speed": 28.0}
+            "car_red_250m": {"x": -80.0, "y": 800.0, "z": 2.5, "speed": 6.0},
+            "r1_rover": {"x": 30.0, "y": 200.0, "z": 0.38, "speed": 3.0}
         }
         self.last_update = 0.0
         self.connected = False

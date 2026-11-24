@@ -36,7 +36,7 @@ namespace systems {
 class KinematicLoopPlugin::Impl
 {
   public: Model model{kNullEntity};
-  public: double speed{25.0};
+  public: double speed{5.0};
   public: double height{0.0};
   public: double currentDistance{0.0};
   public: double totalDistance{0.0};

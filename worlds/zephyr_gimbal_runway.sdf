@@ -480,7 +480,7 @@
       <plugin
         filename="/home/shubh/ardupilot_gazebo/build/libKinematicLoopPlugin.so"
         name="KinematicLoopPlugin">
-        <speed>30.0</speed>
+        <speed>11.0</speed>
         <height>2.5</height>
         <start_index>0</start_index>
         <waypoints>
@@ -846,7 +846,7 @@
       <plugin
         filename="/home/shubh/ardupilot_gazebo/build/libKinematicLoopPlugin.so"
         name="KinematicLoopPlugin">
-        <speed>28.0</speed>
+        <speed>3.0</speed>
         <height>0.38</height>
         <start_index>6</start_index>
         <waypoints>
